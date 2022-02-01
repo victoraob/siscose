@@ -61,6 +61,8 @@
                   
 
                   <li><a href="<?php echo constant('URL') ?>admin"><i class="fa fa-home blue_color"></i> <span> &nbsp;Inicio</span></a></li>
+
+                  <li><a href="<?php echo constant('URL') ?>admin/departamentos"><i class="fa fa-home blue_color"></i> <span> &nbsp; Modificar Departamentos</span></a></li>
                   
                   <li><a href="<?php echo constant('URL') ?>admin/users"><i class="fa fa-user blue_color"></i> <span> &nbsp;Usuarios y Departamentos</span></a></li>
 

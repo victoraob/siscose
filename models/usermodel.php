@@ -301,7 +301,7 @@ public function getEquipmentComputerUser($id){
     $items = [];
     $aidi = $id;
   
-    $query = $this->db->connect()->prepare("SELECT * FROM equipment_computer as ec INNER JOIN equipment_type as et INNER JOIN status_equipment as se INNER JOIN departaments as dep WHERE ec.type_equipcomp = et.id_equipmenttype AND ec.status_equipcomp = se.id_statusequip AND ec.departament_equipcomp = dep.id_dep AND ec.departament_equipcomp = :id ORDER BY ec.id_equipcomp DESC ");
+    $query = $this->db->connect()->prepare("SELECT * FROM equipment_computer as ec INNER JOIN equipment_type as et INNER JOIN status_equipment as se INNER JOIN departaments as dep WHERE ec.type_equipcomp = et.id_equipmenttype AND ec.status_equipcomp = se.id_statusequip AND ec.departament_equipcomp = dep.id_dep AND ec.status_equipcomp !=2 AND ec.departament_equipcomp = :id ORDER BY ec.id_equipcomp DESC ");
   
     try {
         $query->execute(

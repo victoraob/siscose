@@ -70,7 +70,7 @@ include_once "views/users/header.php"; ?>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="alert alert-info" role="alert">
-                                                            <h4 class="text-center text-info">No hay equipos asignados</h4>
+                                                            <h4 class="text-center text-info">No hay equipos asignados o algunos se marcaron como dañados</h4>
                                                         </div>
                                                     </div>
                                                 </div>

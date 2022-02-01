@@ -1,6 +1,6 @@
 <?php  
 
-define('URL','http://localhost/SISCOSE/');
+define('URL','http://localhost/SISTEMAS/SISCOSE/');
 
 define('HOST','localhost');
 define('DB', 'invent_siscose');

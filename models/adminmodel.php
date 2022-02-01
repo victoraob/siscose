@@ -227,7 +227,7 @@ public function getDepartamentsTools(){
 
   try {
 
-   $query = $this->db->connect()->query("SELECT * FROM departaments ");
+   $query = $this->db->connect()->query("SELECT * FROM departaments WHERE id_dep != 1 AND id_dep !=2;");
 
       while($row = $query->FETCHALL(PDO::FETCH_ASSOC)) {
           $items = $row;
@@ -522,7 +522,7 @@ public function getDepartaments(){
 
   try {
 
-   $query = $this->db->connect()->query("SELECT * FROM departaments");
+   $query = $this->db->connect()->query("SELECT * FROM departaments WHERE id_dep !=1 AND id_dep !=2");
 
       while($row = $query->FETCHALL(PDO::FETCH_ASSOC)) {
           $items = $row;
@@ -830,6 +830,57 @@ public function getEquipMainData($id){
 
 
 
+public function updateEquip($datos){
+
+  $query= $this->db->connect()->prepare("UPDATE equipment_computer SET code_equipcomp=:code_equipcomp, model_equipcomp=:model_equipcomp, marca_equipcomp=:marca_equipcomp, color_equipcomp=:color_equipcomp, type_equipcomp=:type_equipcomp  WHERE id_equipcomp = :id ");
+
+  try {
+
+    $query->execute([
+      'code_equipcomp' => $datos["code_equipcomp"],
+      'model_equipcomp' => $datos["model_equipcomp"],
+      'marca_equipcomp' => $datos["marca_equipcomp"],
+      'color_equipcomp' => $datos["color_equipcomp"],
+      'type_equipcomp' => $datos["type_equipcomp"],
+      'id'    => $datos['id']
+      
+    ]);
+
+    return true;
+    
+  } catch (PDOException $e) {
+    return false;
+    
+  }
+  
+  
+}
+
+
+
+
+public function updateDepart($datos){
+
+  
+  $query= $this->db->connect()->prepare("UPDATE departaments SET name_dep=:name_dep, description_dep=:description_dep WHERE id_dep = :id ");
+
+  try {
+
+    $query->execute([
+      'name_dep' => $datos["name"],
+      'description_dep' => $datos["description"],
+      'id'    => $datos['id']
+      
+    ]);
+
+    return true;
+    
+  } catch (PDOException $e) {
+    return false;
+    
+  }
+
+}
 
 
 

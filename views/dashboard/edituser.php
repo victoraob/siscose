@@ -76,7 +76,7 @@ include_once "views/dashboard/header.php"; ?>
 
                     <div class="form-group col-md-6">
                         <div class="form-group ">
-                            <button type="submit" name="update" class="btn btn-success btn-lg btn-block">Acutalizar</button>
+                            <button type="submit" name="update" class="btn btn-success btn-lg btn-block">Actualizar</button>
                         </div>
                     </div>
 

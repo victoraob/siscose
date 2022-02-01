@@ -15,7 +15,7 @@ include_once "views/dashboard/header.php"; ?>
                                 <?php echo $this->mensajeerror;?>
                              </div>
                            <?php } ?> 
-                        <h2> <button type="button" class="btn cur-p btn-info" data-toggle="modal" data-target="#registromodal">registrar usuario</button> | <button type="button" class="btn cur-p btn-secondary" data-toggle="modal" data-target="#depamodal">Agregar Departamento</button></h2>
+                        <h2> <button type="button" class="btn cur-p btn-info" data-toggle="modal" data-target="#registromodal">Nuevo Usuario</button> | <button type="button" class="btn cur-p btn-primary" data-toggle="modal" data-target="#registrotech">Nuevo Tecnico</button> | <button type="button" class="btn cur-p btn-secondary" data-toggle="modal" data-target="#depamodal">Agregar Departamento</button></h2>
                     </div>
                 </div>
                 <div class="table_section padding_infor_info">
@@ -91,7 +91,130 @@ include_once "views/dashboard/header.php"; ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Registro Nuevo Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <form action="<?php echo constant('URL'); ?>admin/registro" method="POST">
+                            <div class="row justify-content-center">
+
+                                <div class="form-group  col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombre" name="name" pattern="[A-Z-a-z]+">
+                                        
+                                    </div>
+                                    <small>solo se permiten letras</small>
+                                </div>
+
+                                <div class="form-group  col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Apellido" name="lastname" pattern="[A-Z-a-z]+">
+                                    </div>
+                                    <small>solo se permiten letras</small>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="correo@example.com" name="email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group  col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group  col-md-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" placeholder="Telefono" name="phone">
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group  col-md-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                        </div>
+
+                                        <select class="form-control" id="exampleFormControlSelect1" name="rol">
+                                            <option selected disabled>Tipo de usuario</option>
+
+                            <?php foreach ($this->rols as $rol){?>
+                                        <option value=" <?php echo $rol['id_rols']?>"><?php echo $rol['name_rols']?></option>
+                            <?php }?>
+
+                                            
+                                        </select>
+                                    </div>
+                                </div> -->
+
+                                <input type="hidden" name="rol" value="3">
+
+
+                                <div class="form-group  col-md-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                        </div>
+
+                                        <select class="form-control" id="exampleFormControlSelect1" name="departament">
+                                            <option selected disabled>Departamento</option>
+
+                                        <?php foreach ($this->departaments as $depa){?>
+                                        <option value=" <?php echo $depa['id_dep']?>"><?php echo $depa['name_dep']?></option>
+                                        <?php }?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <div class="form-group ">
+                                        <button type="submit" name="registrar" class="btn btn-corsetti btn-lg btn-block">Registrar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="registrotech" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro Nuevo Tecnico</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -152,7 +275,7 @@ include_once "views/dashboard/header.php"; ?>
                                     </div>
                                 </div>
 
-                                <div class="form-group  col-md-12">
+                                <!-- <div class="form-group  col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
@@ -168,10 +291,17 @@ include_once "views/dashboard/header.php"; ?>
                                             
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
-
+                                <input type="hidden" name="rol" value="2">
+                                <input type="hidden" name="departament" value="2">
+                                
                                 <div class="form-group  col-md-12">
+                                <hr><h6>Departamento de Informatica</h6><hr>
+                                </div>
+                                
+
+                                <!-- <div class="form-group  col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
@@ -186,7 +316,7 @@ include_once "views/dashboard/header.php"; ?>
 
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group col-md-6">
                                     <div class="form-group ">
@@ -202,8 +332,6 @@ include_once "views/dashboard/header.php"; ?>
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="depamodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

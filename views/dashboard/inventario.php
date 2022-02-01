@@ -63,7 +63,8 @@ include_once "views/dashboard/header.php"; ?>
                                             <th>MARCA</th>
                                             <th>DEPARTAMENTO</th>
                                             <th>ESTADO</th>
-                                            <th>Opciones</th>
+                                            <th>VER</th>
+                                            <th>OPCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,6 +101,10 @@ if ($equipmentComputer["id_statusequip"] == 3) {
                                                 </td>
 
                                                 <td><a href="<?php echo constant('URL') . "admin/idetails/" . $equipmentComputer['id_equipcomp']; ?>" class="btn cur-p btn-outline-success">Detalles <i class="fa fa-newspaper"></i></a></td>
+
+                                                <td><a href="<?php echo constant('URL') . "admin/editarequipo/" . $equipmentComputer['id_equipcomp']; ?>" class="btn cur-p btn-warning">Editar <i class="fa fa-newspaper"></i></a></td>
+
+
                                             <tr>
                                             <?php endforeach; ?>
 

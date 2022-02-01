@@ -586,6 +586,108 @@ public function maindetails($id = NULL){
 
 
 
+public function departamentos(){
+    $this->getTool();
+
+    if (isset($_POST['update'])) {
+
+        if (!empty($_POST['name']) AND !empty($_POST['description']) ) {
+
+            $datos = [
+                'name'         => $_POST['name'],
+                'description'  => $_POST['description'],
+                'id'  => $_POST['id']
+                
+            ];
+
+            if ($this->model->updateDepart($datos)) {
+                    $this->view->mensajeerror = "EL departamento fue actualizado con exito";
+                    $this->view->claseStyle = "alert-success";
+                    $this->view->departaments = $this->model->getDepartamentsTools();
+                    $this->view->render('dashboard/departamentos');
+
+
+            }else{
+                $this->view->mensajeerror =  "No es posible realizar su peticion, contacte a soporte";
+                $this->view->claseStyle = "alert-warning";
+                $this->view->departaments = $this->model->getDepartamentsTools();
+                $this->view->render('dashboard/departamentos');
+
+            }
+
+        }else{
+            $this->view->mensajeerror =  "Verifique, hay campos vacios al actualizar un departamento";
+            $this->view->claseStyle = "alert-warning";
+            $this->view->departaments = $this->model->getDepartamentsTools();
+            $this->view->render('dashboard/departamentos');
+        }
+
+       
+    }else{
+        $this->view->departaments = $this->model->getDepartamentsTools();
+        $this->view->render('dashboard/departamentos');
+    }
+
+    
+}
+
+
+public function editarEquipo($ide){
+    $this->getTool();
+    $id = $ide[0];
+
+    $this->view->equipmentType = $this->model->getEquipmentType();
+    $this->view->equipo =$this->model->getEquipmentComputerWhere($id);
+    $this->view->render('dashboard/editEquipo');
+}
+
+public function updateEquipo(){
+    $this->getTool();
+    if (isset($_POST['update'])) {
+
+        if (!empty($_POST['code_equipcomp']) AND
+                !empty($_POST['model_equipcomp']) AND
+                !empty($_POST['marca_equipcomp']) AND
+                !empty($_POST['color_equipcomp']) AND
+                !empty($_POST['type_equipcomp']) AND  
+                !empty($_POST['id'])) {
+
+                $datos = [
+
+                    'code_equipcomp' => $_POST["code_equipcomp"],
+                    'model_equipcomp' => $_POST["model_equipcomp"],
+                    'marca_equipcomp' => $_POST["marca_equipcomp"],
+                    'color_equipcomp' => $_POST["color_equipcomp"],
+                    'type_equipcomp' => $_POST["type_equipcomp"],
+                    'id'    => $_POST['id']
+
+                ];
+
+                if ($this->model->updateEquip($datos)) {
+                    $sms = 'Equipo actualizado correctamente';
+                    $this->view->mensaje = $sms;
+                    $id = $datos['id'];
+                    header('location:'.constant('URL').'admin/editarEquipo/'.$id);
+                }else{
+
+                   // echo "aquiun";
+                    header('location:'.constant('URL').'admin/inventario');
+                }
+
+            }else{
+                //echo "aqui vacio";
+                header('location:'.constant('URL').'admin/inventario');
+            }
+    }else{
+        header('location:'.constant('URL').'admin/inventario');
+    }
+}
+
+
+
+
+
+
 
 
 

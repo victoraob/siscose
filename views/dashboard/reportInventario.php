@@ -85,6 +85,8 @@
                                             <th>MODELO</th>
                                             <th>MARCA</th>
                                             <th>DEPARTAMENTO</th>
+
+                                            <th>Fecha de entrada</th>
                                             <th>ESTADO</th>
                                         </tr>
                                     </thead>
@@ -99,6 +101,7 @@
                                                 <td><?php echo $equipmentComputer['model_equipcomp']; ?></td>
                                                 <td><?php echo $equipmentComputer['marca_equipcomp']; ?></td>
                                                 <td><?php echo $equipmentComputer['name_dep']; ?></td>
+                                                <td><?php echo $equipmentComputer['create_equipcomp']; ?></td>
                                                 <td><button class="btn btn-dark"><?php echo $equipmentComputer['name_statusequip']; ?></button></td>
                                                 
                                             <tr>

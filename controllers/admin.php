@@ -353,7 +353,7 @@ class Admin extends Controller{
             $this->view->render('dashboard/inventario');
         }
     }
-
+  
     public function loadViewInventario(){
         $this->getTool();
         $this->view->equipmentType = $this->model->getEquipmentType();
@@ -682,6 +682,46 @@ public function updateEquipo(){
         header('location:'.constant('URL').'admin/inventario');
     }
 }
+
+
+
+
+
+
+public function getConsult(){
+
+    if (isset($_POST['send'])) {
+
+    $desde = $_POST["desde"];
+    $d = date_create($_POST["desde"]);
+    $h = date_create($_POST["hasta"]);
+    date_add($h, date_interval_create_from_date_string("1 days"));
+    $hasta = date_format($h,"Y-m-d");
+
+   
+    $this->view->equipmentComputer = $this->model->getConsult($desde,$hasta);
+    $this->view->dh = ['desde' => date_format($d,"d-m-Y"), 'hasta' => date_format($h,"d-m-Y")];
+    
+    $this->getTool();
+    $this->view->equipmentType = $this->model->getEquipmentType();
+    // $this->view->mensajeerror =  "Verifique, hay campos vacios al actualizar un departamento";
+    // $this->view->claseStyle = "alert-warning";
+
+    $this->view->render('dashboard/reportInventario');
+    //$this->view->render('dashboard/inventario');
+    
+}else{
+    header('location:'.constant('URL').'admin/consultas');
+}
+  
+
+   //var_dump($this->model->getConsult($desde,$hasta));
+   // $this->model->getConsult($desde,$hasta);
+
+
+
+}
+
 
 
 

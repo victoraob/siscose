@@ -26,22 +26,50 @@ include_once "views/dashboard/header.php"; ?>
     <?php endif; ?>
 
 
-    <!-- row -->
-    <div class="row column1">
-        <div class="col-md-12">
-            <div class="white_shd full margin_bottom_30">
-                <div class="full graph_head">
-                    <div class="heading1 margin_0">
-                        <h2>
+
+    <div class="card">
+        <div class="card-header">
+        <h3 class="display-5">
                             Listado |
 
                             <button type="button" class="btn cur-p btn-primary" data-toggle="modal" data-target="#newequip"> <i class="fa fa-desktop blue_color"></i> Nuevo Equipo</button> |
 
                             <button type="button" class="btn cur-p btn-info" data-toggle="modal" data-target="#newtype"> <i class="fa fa-boxes blue_color"></i> Nuevo tipo</button>|
 
-                            <a href="<?php echo constant('URL'); ?>admin/reportInventario" class="btn cur-p btn-danger" target="blank"> <i class="fas fa-file-pdf"></i> Generar Reporte</a>
+                            <a href="<?php echo constant('URL'); ?>admin/reportInventario" class="btn cur-p btn-danger" target="blank"> <i class="fas fa-file-pdf"></i> Reporte de inventario</a>
 
-                        </h2>
+                        </h3>
+        </div>
+        <div class="card-body my-3">
+             <form class="form-material" method="POST" action="<?php echo constant('URL'); ?>admin/getConsult"  target="_blank">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h4 for="start" class="labeldat">Reporte desde:</h4>
+                                <input type="date" id="start" name="desde" value="<?php echo date('d-m-Y'); ?>" class="form-control" required>
+                            </div>
+                            <div class="col-md-2">
+                                <h4 for="start" class="labeldat">hasta:</h4>
+                                <input type="date" id="start" name="hasta" value="<?php echo date('d-m-Y'); ?>" class="form-control" required>
+                            </div>
+                            <div class="col-md-2 mt-4">
+                                <h4 for="start" class="labeldat"><h4>
+                                <p class="text-center"><input type="submit" id="start" name="send" value="sacar reporte" class="btn btn-outline-danger"></p>
+                            </div>
+                        </div>
+
+
+                        
+                    </form>
+        </div>
+    </div>
+
+
+    <!-- row -->
+    <div class="row column1">
+        <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">
+                    <div class="heading1 margin_0">
                         <?php if (isset($this->mensajeerror)) { ?>
                             <div class="alert  <?php echo $this->claseStyle; ?>" role="alert">
                                 <?php echo $this->mensajeerror; ?>

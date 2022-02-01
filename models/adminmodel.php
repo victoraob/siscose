@@ -892,6 +892,36 @@ public function updateDepart($datos){
 
 
 
+public function getConsult($desde,$hasta){
+
+  $items = [];
+  
+   $query = $this->db->connect()->query("SELECT * FROM `equipment_computer` as ec INNER JOIN equipment_type as et INNER JOIN status_equipment as se INNER JOIN departaments as dep WHERE ec.type_equipcomp = et.id_equipmenttype AND ec.status_equipcomp = se.id_statusequip AND ec.departament_equipcomp = dep.id_dep AND ec.create_equipcomp BETWEEN '$desde' and '$hasta' ORDER BY id_equipcomp DESC;");
+ 
+  try {
+
+      while($row = $query->FETCHALL(PDO::FETCH_ASSOC)) {
+          $items = $row;
+      }
+
+      return $items;
+      return true;
+      
+  } catch (PDOException $e) {
+      return [];
+      return false;
+  }
+
+
+
+}
+
+
+
+
+
+
+
 
 
 
